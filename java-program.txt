@@ -6,11 +6,11 @@
 
 public class Phone {
  public void call() {
-	 System.out.println("Phone calling");
+	 System.out.println("Phone calling for windies");
 	 }
  public class Mobile{
 	 public void voicemail() {
-		 System.out.println("Roaming free");
+		 System.out.println("Roaming free voicemail ");
 		 
 	 }
  }
