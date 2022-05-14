@@ -1,0 +1,543 @@
+**************************Inheritanace*******************
+
+
+*****Phone.java******
+
+
+public class Phone {
+ public void call() {
+	 System.out.println("Phone calling ");
+	 }
+ public class Mobile{
+	 public void voicemail() {
+		 System.out.println("Roaming free  ");
+		 
+	 }
+ }
+ }
+
+
+
+
+
+
+
+*************************Mobile.java**********************
+
+	
+public class Mobile extends Phone{
+	public void call() 
+	{
+		System.out.println("Mobile calling");
+	}
+	public void voicemail() 
+	{
+		System.out.println("Roaming free print status of git repository");
+	}
+	}
+
+
+
+
+
+******************Testphone.java**************************
+
+
+
+public class Testphone {
+	public static void main(String []args) {
+		Phone p=new Phone();
+		Mobile m=new Mobile();
+		p.call();
+		m.call();
+		Phone p1= new Mobile();
+		p1.call();
+	}
+
+}
+
+
+
+
+
+******************************Interface***************************
+
+
+
+******************Hospital.java******************
+public interface Hospital {
+	public void consult();
+	public void scan();
+	public void xray();
+
+}
+
+
+
+
+
+
+*****************FortisHospital***********************
+public class FortisHospital implements Hospital{
+	public void consult() {
+		System.out.println("Fortis Consult");
+	}
+	public void scan() {
+		System.out.println("Fortis scan");
+	}
+	public void xray() {
+		System.out.println("Fortis xray");
+	}
+	public void phoneConsult() {
+		System.out.println("Phone consultation");
+	}
+
+}
+
+
+
+**************************TestHospital***********************
+
+public class TestHospital {
+	public static void main(String []args) {
+		GovHospital g=new GovHospital();
+		g.consult();
+		g.scan();
+		g.xray();
+	
+	 FortisHospital f= new FortisHospital(); 
+		 f.scan();
+		 f.xray();
+		 f.phoneConsult();
+		 
+	 
+	 Hospital h1=new FortisHospital();
+	 h1.consult();
+	 Hospital h2=new GovHospital();
+	 h2.scan();
+	}
+}
+
+
+
+*********************************GovHospital*************************
+
+
+public class GovHospital implements Hospital {
+	public void consult() {
+		System.out.println("Govt Consult");
+	}
+	public void scan() {
+		System.out.println("Govt scan");
+	}
+	public void xray() {
+		System.out.println("xray scan");
+	}
+	
+
+}
+
+
+
+
+
+
+
+
+********************************WEBBrowerTesting*****************************************
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+public class Drivers_Selenium {
+	public static void main(String[]args) {
+		System.setProperty("webdriver.gecko.driver","F:\\selenium\\Driver\\geckodriver.exe");
+		FirefoxDriver f=new FirefoxDriver();
+		f.get("http://www.google.co.in");
+		
+		
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		ChromeDriver c=new ChromeDriver();
+		c.get("http://www.google.co.in");
+		
+		
+		
+		System.setProperty("webdriver.ie.driver", "F:\\selenium\\Driver\\IEDriverServer.exe");
+		InternetExplorerDriver e=new InternetExplorerDriver();
+		e.get("http://www.google.co.in");
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+*******************************************Web with if else************************************
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.Test;
+
+public class Ddrivers {
+	String browser ="IE";
+	@Test
+	public void launch() {
+		System.setProperty("webdriver.gecko.driver","F:\\selenium\\Driver\\geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		System.setProperty("webdriver.ie.driver", "F:\\selenium\\Driver\\IEDriverServer.exe");
+		
+		
+		if (browser.equals("Firefox")) 
+		{
+			FirefoxDriver f=new FirefoxDriver();
+			f.get("http://www.google.co.in");
+		}
+		else if(browser.equals("Chrome"))
+		{
+			ChromeDriver c=new ChromeDriver();
+			c.get("http://www.google.co.in");
+		}
+		else if(browser.equals("IE"))
+		{
+			InternetExplorerDriver e=new InternetExplorerDriver();
+			e.get("http://www.google.co.in");
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+*************************************DriverInterfaceReference****************************************
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.Test;
+
+public class DriverInterfaceReference {
+	String browser ="Chrome";
+	@Test
+	public void launch() {
+		System.setProperty("webdriver.gecko.driver","F:\\selenium\\Driver\\geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		System.setProperty("webdriver.ie.driver", "F:\\selenium\\Driver\\IEDriverServer.exe");
+		
+		
+		//Interface- Reference vairiable and pointing it to nothing
+		WebDriver driver=null;
+		
+		if (browser.equals("Firefox"))
+		{
+			driver=new FirefoxDriver(); //Upcasting
+		}
+		else if(browser.equals("Chrome"))
+		{
+			driver=new ChromeDriver();
+		}
+		else if(browser.equals("IE"));
+		{
+			driver =new InternetExplorerDriver();
+	    }
+		driver.get("http://www.google.co.in");
+		driver.close();
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***************************************Locators***********************************
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Locators {
+	public static void main(String[]args) {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://demoaut.com/");
+		//driver.findElement(By.name("userName")).sendKeys("mercury");
+		//driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[2]/td[3]/form/table/tbody/tr[4]/td/table/tbody/tr[2]/td[1]/font\r\n" + "").sendKeys("mercury");
+		driver.findElement(By.xpath("//input[@name='userName']")).sendKeys("mercury");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("mercury");
+		driver.findElement(By.xpath("//input[@name='login']")).click();
+	}
+}
+		
+
+
+
+
+
+
+******************************************LinkTesting*************************************
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+public class LinkTesting {
+	public static void main(String[]args) {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://demoaut.com/");
+		List<WebElement> links=driver.findElements(By.tagName("a"));
+		
+		
+		//to count no. of links
+		System.out.println("The no. of links-> "+links.size());
+		
+		//to get the name of all links
+		for(int i=0;i<links.size();i++)
+		{
+			System.out.println(links.get(i).getText());
+		}
+		
+		//to go and click hotel link
+		driver.findElement(By.linkText("Hotels")).click();
+		String currentURL=driver.getCurrentUrl();
+		System.out.println("The current URL is--> "+currentURL);
+	}
+}
+
+
+
+
+
+*************************************DropDownHandling********************
+
+
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropDownBoxTesting {
+	public static void main(String[]args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://demoaut.com/");
+		//Implicitly Wait
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+		driver.findElement(By.xpath("//input[@name='userName']")).sendKeys("mercury");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("mercury");
+		driver.findElement(By.xpath("//input[@name='login']")).click();
+		
+		Thread.sleep(40000);
+		WebElement dropdown=driver.findElement(By.name("fromPort"));
+		Select s=new Select(dropdown);
+		
+		//1.Select an Item
+		
+		
+		//s.selectByIndex(0);
+		//s.selectByVisibleText("London");
+		s.selectByValue("Paris");
+		
+		
+		//2.Count the total Items
+		 //This will return all the web element in the list
+		List<WebElement> options=s.getOptions();
+		System.out.println("the total elements in the list-> "+options.size());
+		
+		
+		
+		//3.Print all the elements
+		for(WebElement e:options)
+		{
+			System.out.println(e.getText());
+		}
+		
+		
+		//4.Find which item is selected
+		
+		System.out.println("Currently selected city->"+s.getFirstSelectedOption().getText());
+		
+		
+		
+	}
+}
+
+
+
+
+
+***********************************RadioButtons****************************************
+
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class RadioButtons {
+	public static void main(String[]args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://tutorialehtml.com/en/html-tutorial-radio-buttons/");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
+		List<WebElement> radiobuttons= driver.findElements(By.name("citizenship"));
+		System.out.println("Total radio buttons ingroup citizenship-> "+radiobuttons.size());
+		
+		radiobuttons.get(0).click();
+	}
+
+}
+
+
+
+
+
+********************************ExplicitWait***************************
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class ExplicitWait {
+	public static void main(String[]args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://portfolio.rediff.com/portfolio-login");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.id("useremail")).sendKeys("david");
+		driver.findElement(By.id("emailsubmit")).click();
+
+		
+		//Explicit Wait
+		
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("userpass"))));
+		
+		driver.findElement(By.id("userpass"));
+	}
+	
+
+}
+
+
+
+
+*************************alertHandling***********************
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class AlertHandling {
+	public static void main(String[]args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "F:\\selenium\\Driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://portfolio.rediff.com/portfolio-login");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.id("login1")).sendKeys("Swapnil");
+		driver.findElement(By.name("proceed")).click();
+		
+		//Explicit wait
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.alertIsPresent());
+		
+		//Handle the alert
+		Alert al=driver.switchTo().alert();
+		al.accept();
+		//al.dismiss
+		
+	driver.switchTo().defaultContent();
+	
+	driver.findElement(By.id("password")).sendKeys("swapnil");
+	}
+
+}
+
+
+
+
+*********************************Screenshot*****************************
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Screenshot {
+	public static void main(String[]args) throws InterruptedException, IOException {
+		System.setProperty("webdriver.gecko.driver","F:\\selenium\\Driver\\geckodriver.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://demowebshop.tricentis.com/login");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.findElement(By.id("Email")).sendKeys("swapnilingole29@gmail.com");
+		
+		
+		//Screenshot
+		String imagepath=System.getProperty("user.dir")+"/screenshots/capture.png";  //Defines the ptah where to store
+		TakesScreenshot src=((TakesScreenshot) driver); //Interface defined to take screenshot
+		File sc=src.getScreenshotAs(OutputType.FILE);  //takes the screenshot
+		FileUtils.copyFile(sc,new File(imagepath));  //copy the screenshot to the path
+	}
+
+}
+
+
+	
