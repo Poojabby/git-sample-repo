@@ -17,6 +17,17 @@ public class Phone {
  }
 
 
+*************************Mobile.java**********************
+
+	
+public class Mobile extends Phone{
+	public void call() 
+	{
+		System.out.println("Mobile calling");
+	}
+	public void voicemail() 
+	{
+
 
 
 
