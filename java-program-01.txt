@@ -540,4 +540,20 @@ public class Screenshot {
 }
 
 
+*****Phone.java******
+
+
+public class Phone {
+ public void call() {
+	 System.out.println("Phone calling ");
+	 }
+ public class Mobile{
+	 public void voicemail() {
+		 System.out.println("Roaming free  ");
+		 
+	 }
+ }
+ }
+
+
 	
