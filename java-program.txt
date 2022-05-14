@@ -32,7 +32,7 @@ public class Mobile extends Phone{
 	}
 	public void voicemail() 
 	{
-		System.out.println("Roaming free");
+		System.out.println("Roaming free print status of git repository");
 	}
 	}
 
